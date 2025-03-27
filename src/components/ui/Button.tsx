@@ -14,6 +14,9 @@ interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   children?: React.ReactNode;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const Button: React.FC<ButtonProps> = ({
