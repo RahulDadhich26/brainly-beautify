@@ -2,6 +2,31 @@
 import React from 'react';
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from "class-variance-authority";
+
+const buttonVariants = cva(
+  "relative inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2",
+  {
+    variants: {
+      variant: {
+        primary: 'bg-brainly-600 text-white hover:bg-brainly-700 focus:ring-brainly-500/50',
+        secondary: 'bg-brainly-100 text-brainly-700 hover:bg-brainly-200 focus:ring-brainly-300/50',
+        outline: 'bg-transparent border border-brainly-300 text-brainly-700 hover:bg-brainly-50 focus:ring-brainly-300/50',
+        ghost: 'bg-transparent text-brainly-700 hover:bg-brainly-50 focus:ring-brainly-300/50',
+        link: 'bg-transparent text-brainly-600 hover:underline p-0 h-auto focus:ring-0'
+      },
+      size: {
+        sm: 'text-xs px-3 h-8 rounded-md',
+        md: 'text-sm px-4 h-10 rounded-lg',
+        lg: 'text-base px-5 h-12 rounded-lg'
+      }
+    },
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md'
+    }
+  }
+);
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -17,6 +42,7 @@ interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -100,4 +126,5 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
+export { Button, buttonVariants };
 export default Button;

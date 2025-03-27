@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
@@ -10,7 +9,7 @@ import {
 
 import PageTransition from '@/components/ui/PageTransition';
 import AnimatedCard from '@/components/ui/AnimatedCard';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 
 const profileData = {
   name: 'John Doe',

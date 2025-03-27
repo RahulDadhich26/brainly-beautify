@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import PageTransition from '@/components/ui/PageTransition';
 import Logo from '@/components/ui/Logo';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import { Eye, EyeOff, ArrowRight, LogIn } from 'lucide-react';
 
 const SignIn: React.FC = () => {

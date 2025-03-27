@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Brain, CheckCircle, Lightbulb, BookOpen, Users, Award } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import AnimatedCard from '@/components/ui/AnimatedCard';
 
 const Index = () => {

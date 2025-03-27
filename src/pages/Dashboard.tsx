@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import PageTransition from '@/components/ui/PageTransition';
 import AnimatedCard from '@/components/ui/AnimatedCard';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const data = [
