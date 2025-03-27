@@ -13,6 +13,7 @@ interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>
   isLoading?: boolean;
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
+  children?: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
