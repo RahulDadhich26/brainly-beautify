@@ -1,17 +1,23 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { 
-  Camera, Edit2, Mail, MapPin, Calendar, Award,
+  Camera, Edit2, Mail, MapPin, Award,
   Bookmark, Settings, User, Lock, ChevronRight, 
-  Bell, LogOut, Sparkles, Clock, Users, BarChart2
+  Bell, LogOut, Sparkles, Clock, Users, BarChart2,
+  CalendarIcon
 } from 'lucide-react';
 
 import PageTransition from '@/components/ui/PageTransition';
 import AnimatedCard from '@/components/ui/AnimatedCard';
 import { Button } from '@/components/ui/Button';
 import { Calendar } from '@/components/ui/calendar';
+import { 
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { format } from 'date-fns';
 
 const profileData = {
   name: 'John Doe',
@@ -72,7 +78,6 @@ const Profile: React.FC = () => {
         
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-6 md:grid-cols-3">
-            {/* Profile Sidebar */}
             <div className="md:col-span-1">
               <AnimatedCard className="sticky top-24 p-6 bg-white/90">
                 <div className="flex flex-col items-center">
@@ -111,7 +116,7 @@ const Profile: React.FC = () => {
                       <span>{profileData.location}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <Calendar size={16} className="text-brainly-500" />
+                      <CalendarIcon size={16} className="text-brainly-500" />
                       <span>Joined {profileData.joinDate}</span>
                     </div>
                   </div>
@@ -127,7 +132,6 @@ const Profile: React.FC = () => {
               </AnimatedCard>
             </div>
             
-            {/* Main Content */}
             <div className="md:col-span-2 space-y-6">
               <AnimatedCard className="p-6 bg-white/90">
                 <div className="flex items-center justify-between mb-4">
@@ -165,7 +169,6 @@ const Profile: React.FC = () => {
                 )}
               </AnimatedCard>
               
-              {/* Activity Heatmap */}
               <AnimatedCard className="p-6 bg-white/90" delay={0.05}>
                 <div className="flex items-center justify-between mb-4">
                   <div>
@@ -179,16 +182,28 @@ const Profile: React.FC = () => {
                 </div>
                 
                 <div className="flex justify-center">
-                  <Calendar
-                    mode="single"
-                    selected={date}
-                    onSelect={setDate}
-                    className="rounded-md border bg-white"
-                  />
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className="w-[240px] justify-start text-left font-normal"
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {date ? format(date, "PPP") : <span>Pick a date</span>}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={date}
+                        onSelect={setDate}
+                        className="p-3 pointer-events-auto rounded-md border bg-white"
+                      />
+                    </PopoverContent>
+                  </Popover>
                 </div>
               </AnimatedCard>
               
-              {/* Activity Summary */}
               <AnimatedCard className="p-6 bg-white/90" delay={0.1}>
                 <div className="flex items-center justify-between mb-4">
                   <div>
